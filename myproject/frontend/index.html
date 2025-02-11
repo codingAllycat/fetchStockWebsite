@@ -1,85 +1,21 @@
-<!-- 
- HTML(HyperText Markup Language)은 웹 페이지의 구조를 정의하는 마크업 언어
-마크업 언어란 문서의 구조를 정의하고 텍스트에 의미를 부여하는 언어, tag를 이용해 문서의 형식을 지정하는 언어이다.
-주로 쓰는 tag에는 <h1>, <p>와 같은 것들이 있다. 
--->
-
 <!DOCTYPE html> <!-- document type: html-->
 <html lang="ko">
 
-<!-- 
-<>안에는 속성이 들어갈 수 있다. HTML 요소 이름, 속성 (lang, src, href), 값("ko", "https://example.com", "100px" 등등)
--->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주식 데이터</title>
-    <script src="/fetchStockWebsite/myproject/frontend/script.js" async></script>
 </head>
-<!-- 
-    웹 문서의 메타데이터(정보)를 포함하는 영역 , <meta>는 <head>안에 있어야 한다. meta는 HTML 문서의 메타데이터를 포함하는 태그
-    웹사이트의 설명, 문자 인코딩, 뷰포트 설정 등 다양한 정보를 포함할 수 있다.
-    메타데이터는 데이터에 대한 meta 정보이다.
-
-    meta charset: 문서의 문자 인코딩
-    meta name = "viewpoint" content = "wideth=device-width, initial scale = 1.0" 화면 크기 설정
-    meta name = "description" content = "검색결과에서 웹페이지 아래에 설명이 표시됨."
-    meta name = "keywords" content = "HTML, 웹 개발, 마크업언어" 검색엔진에 페이지의 키워드를 제공, 그러나 요즘은 잘 사용하지 않음.
-    meta name = "author" content = "이태헌"
-    meta name = "copyright" content = "@2025 MyWebsite"
-
-    meta name은 원하는대로 지정할 수 있으나, 검색엔진에서는 특정 name만을 사용한다. 
- UTF-8: 한글을 포함한 문자가 안깨지도록, -->
 
 <body>
-   <!-- 
-   body는 웹페이지에서 사용자가 직접 볼 수 있는 모든 콘텐츠를 포함한다.
-     브라우저 화면에 표시되는 모든 요소(텍스트, 이미지, 버튼 등)가 body에 들어간다. 
-     텍스트, 이미지, 링크, 목록, 테이블, 입력 폼, 멀티미디어, 기타 레이아웃 관련 태그 등
-     
-     1. 제목 태그 (<h1> ~ <h6>)
-        1이 가장 크고, 6이 제일 작다.
 
-     2. 문단 태그 <p>
-        일반적으로 본문을 적을 때 사용한다.
-
-     3. 줄바꿈과 수평선 <br> 줄바꿈, <hr> 수평선
-
-     등등
-     -->
    <h1>실시간 주식 데이터</h1>
    
    <!-- 주식 심볼 입력 및 버튼 -->
    <label for="stock-input">종목 코드:</label>
-   <!--
-      label은 입력 필드(input, textarea, select)에 대한 설명을 제공하는 코드이다.
-      사용자가 label을 클릭하면, 자동으로 연결된 input 필드가 포커스를 받는다. 
 
-      for = "stock-input"은 id = "stock-input"인 input을 가리킨다.
-      종목코드를 클릭하면 입력창이 활성화됨. 
-
-      이 코드는 라벨을 클릭해도 입력창이 선택되도록 하는, 모바일 편의성을 개선하기 위해 필요하다.
-      종목코드라는 텍스트와 입력창을 묶는 것이다. (종목코드 -> 입력창의 관계계)
-
-   -->
    <input type="text" id="stock-input" placeholder="예: 005930.KS">
-   <!--
-      사용자가 주식 종목 코드를 입력할 수 있는 텍스트 입력창을 만드는 HTML 코드
-      input type = "text"는 텍스트를 입력할 수 있는 입력창을 생성함. 숫자나 문자 등 아무 텍스트나 입력가능
-      id = stock-input으로 이 입력창의 고유 id를 설정함. JavaScript에서 이 입력창을 찾고 값을 가져오거나 수정할 때 id를 사용
-      
-      입력창에 입력하고 제출했을 때, id가 key가 되고, 입력된 값이 value가 되어 저장됨.
-
-      placeholder는 입력창에 입력할 내용을 힌트로 제공함.
-   -->
    <button onclick="fetchStockData(document.getElementById('stock-input').value)">검색</button>
-   <!--
-      버튼을 클릭했을 때 searchstock()이라는 JavaScript 함수를 실행하는 버튼을 생성함.
-      button은 사용자가 클릭할 수 있는 버튼을 만드는 태그
-      사용자가 버튼을 클릭하면(onclick) searchStock()함수를 실행한다. 이 함수는 JavaScript에 정의되어 있음.
-
-      symbol은 document.getElementById("stock-input").value로 구함.
-   -->
 
    <!-- 종목 이름 출력 -->
    <h2 id="stock-symbol"></h2>
@@ -98,5 +34,6 @@
        </thead>
        <tbody id="stock-data"></tbody>
    </table>
+   <script src="/fetchStockWebsite/myproject/frontend/script.js" async></script>
 </body>
 </html>
